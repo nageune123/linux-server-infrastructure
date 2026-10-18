@@ -97,4 +97,8 @@ NAT 인터페이스에 설정된 것을 검증했다.
 
 ```bash
 ping -c 4 google.com
+```
 
+![DNS 검증 결과](./dns-verification.png)
+
+### 검증 결과
