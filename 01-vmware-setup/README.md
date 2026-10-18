@@ -68,3 +68,12 @@ lsblk
 VMware에서 가상 서버를 생성하고 Ubuntu Server를 설치하는 과정을 통해 가상화 기반 서버 구축의 기본 흐름을 이해했다.
 
 가상머신에 CPU, 메모리, 디스크 자원을 할당하고 Linux 명령어를 이용해 시스템 정보를 확인하는 방법을 학습했다.
+
+## 6. VMware 가상머신 설정 검증
+
+![VMware 하드웨어 설정](./vmware-hardware.png)
+
+VMware Workstation Pro에서 CPU 2 vCPU,
+메모리 3GB, 디스크 30GB를 할당하고
+Host-only 및 NAT 네트워크 어댑터를
+구성한 것을 확인했습니다.
