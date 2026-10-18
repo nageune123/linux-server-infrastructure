@@ -74,9 +74,9 @@ ubuntu-server
 
 SSH 서비스 상태 및 원격 접속 검증 화면을 첨부한다.
 
-![SSH 서비스 상태](ssh-service.png)
+![SSH 서비스 상태](ssh-connection.png)
 
-![SSH 접속 및 서버 정보 검증](ssh-connection.png)
+![SSH 접속 및 서버 정보 검증](ssh-service.png)
 
 ## 8. 학습 내용
 
