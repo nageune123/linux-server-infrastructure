@@ -77,3 +77,25 @@ VMware Workstation Pro에서 CPU 2 vCPU,
 메모리 3GB, 디스크 30GB를 할당하고
 Host-only 및 NAT 네트워크 어댑터를
 구성한 것을 확인했습니다.
+
+## 7. Ubuntu Server 시스템 정보 검증
+
+![Ubuntu 시스템 정보](./ubuntu-system-info.png)
+
+### 검증 결과
+
+| 항목 | 확인 결과 |
+|---|---|
+| OS | Ubuntu Server 24.04.3 LTS |
+| CPU | 2 vCPU |
+| 메모리 | 약 2.9GiB |
+| 가상 디스크 | 30GB |
+| 루트 LVM | 28GB |
+
+VMware에서 할당한 CPU, 메모리, 디스크가
+Ubuntu Server에서 정상적으로 인식되는
+것을 확인했습니다.
+
+또한 이전 LVM 확장 실습을 통해 루트
+논리 볼륨이 28GB로 확장된 상태임을
+확인했습니다.
