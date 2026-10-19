@@ -43,9 +43,9 @@ df -h
 
 확인한 주요 결과:
 - 물리 메모리: 약 2.9GiB
-- 사용 가능한 메모리(available): 약 2.5GiB
+- 사용 가능한 메모리(available): 약 2.4GiB
 - Swap: 약 2.8GiB, 사용량 0
-- 루트 파일시스템: 28G 중 약 5.6G 사용, 사용률 22%
+- 루트 파일시스템: 28G 중 약 5.9G 사용, 사용률 23%
 
 ![메모리 및 디스크 사용량](memory-disk.png)
 
@@ -61,12 +61,12 @@ jobs -l
 
 ### 6.2 프로세스 종료
 ```bash
-kill 16265
+kill 16311
 jobs -l
-ps -p 16265
+ps -p 16311
 ```
 
-kill 명령어로 SIGTERM 종료 신호를 전송하였다. jobs -l에서 Terminated 상태를 확인하였으며, ps -p 16265 결과에 프로세스가 나타나지 않아 종료를 검증하였다.
+kill 명령어로 SIGTERM 종료 신호를 전송하였다. jobs -l에서 Terminated 상태를 확인하였으며, ps -p 16311 결과에 프로세스가 나타나지 않아 종료를 검증하였다.
 
 ![프로세스 종료 검증](process-control.png)
 
