@@ -47,7 +47,7 @@ df -h
 - Swap: 약 2.8GiB, 사용량 0
 - 루트 파일시스템: 28G 중 약 5.6G 사용, 사용률 22%
 
-![메모리 및 디스크 사용량](resource-monitoring.png)
+![메모리 및 디스크 사용량](memory-disk.png)
 
 ## 6. 백그라운드 프로세스 생성 및 종료
 
@@ -68,7 +68,7 @@ ps -p 16265
 
 kill 명령어로 SIGTERM 종료 신호를 전송하였다. jobs -l에서 Terminated 상태를 확인하였으며, ps -p 16265 결과에 프로세스가 나타나지 않아 종료를 검증하였다.
 
-![프로세스 종료 검증](process-kill.png)
+![프로세스 종료 검증](process-control.png)
 
 ## 7. 실습 결과
 
