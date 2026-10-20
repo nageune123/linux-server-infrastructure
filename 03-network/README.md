@@ -102,3 +102,7 @@ ping -c 4 google.com
 ![DNS 검증 결과](./dns-verification.png)
 
 ### 검증 결과
+
+Google 도메인에 대한 DNS 이름 해석이 정상적으로 수행되었으며, `ping -c 4 google.com` 명령어 실행 결과 패킷 4개 송신 및 4개 수신, 패킷 손실률 0%를 확인했습니다.
+
+이를 통해 Ubuntu Server에서 DNS 이름 해석과 외부 네트워크 통신이 정상적으로 동작함을 검증했습니다.
