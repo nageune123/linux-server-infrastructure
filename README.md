@@ -89,6 +89,7 @@ Linux 서버 운영에 필요한 기본 관리 역량을 습득하고, 실제 �
 
 [상세 실습 보기](./07-service-log-management/)
 
+- [10. Bash 서버 모니터링 자동화](./10-server-monitoring/README.md)
 ## 3. 주요 실습 검증 결과
 
 ### LVM 스토리지 확장
