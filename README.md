@@ -118,6 +118,13 @@ Linux 서버 운영에 필요한 기본 관리 역량을 습득하고, 실제 �
 
 [상세 실습 보기](./10-server-monitoring/README.md)
 
+### 11. Suricata IDS 기반 네트워크 침입 탐지
+- ICMP Ping 탐지 규칙 작성 및 검증
+- SSH TCP SYN 연결 시도 탐지
+- threshold 기반 반복 SSH 연결 시도 경고
+- fast.log 및 eve.json 로그 분석
+- [실습 상세 보기](11-suricata-ids/README.md)
+
 
 ## 3. 주요 실습 검증 결과
 
