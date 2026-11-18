@@ -139,3 +139,37 @@ JSON 로그를 분석하여 다음 정보를 추출하였다.
 단순히 보안 프로그램을 설치하는 것뿐만 아니라, 직접 탐지 규칙을 작성하고 테스트 트래픽을 발생시켜 경고를 확인하는 전체 과정을 실습하였다.
 
 또한 탐지되지 않는 상황에서 네트워크 구성과 명령어 실행 환경을 점검하며 문제를 해결하는 경험을 쌓았다.
+
+## 9. 실습 결과 스크린샷
+
+### 9.1 Suricata 서비스 실행 확인
+
+`systemctl` 명령어를 통해 Suricata 서비스가 정상 실행 중임을 확인하였다.
+
+![Suricata 서비스 실행 상태](01-suricata-status.png)
+
+### 9.2 ICMP Ping 탐지
+
+Ubuntu Client에서 Server로 Ping을 전송하고 Suricata의 `fast.log`에서 ICMP 탐지 경고가 기록된 것을 확인하였다.
+
+![ICMP Ping 탐지 결과](02-icmp-detection.png)
+
+### 9.3 반복 SSH 연결 시도 탐지
+
+Ubuntu Client에서 Server의 SSH 포트(22)로 반복 연결을 시도하였다.
+
+Suricata 탐지 규칙의 `threshold` 옵션을 활용하여 반복적인 TCP SYN 연결 시도에 대한 경고 발생을 확인하였다.
+
+![반복 SSH SYN 탐지 결과](03-ssh-detection.png)
+
+### 9.4 eve.json 로그 분석
+
+`jq` 명령어를 활용하여 Suricata의 JSON 로그에서 출발지 IP, 목적지 IP, 포트, 탐지 메시지 및 처리 결과를 추출하였다.
+
+- 출발지 IP: `192.168.109.129`
+- 목적지 IP: `192.168.109.128`
+- 목적지 포트: `22`
+- 탐지 메시지: `Repeated SSH SYN Attempts Detected`
+- 처리 결과: `allowed` (탐지만 수행, 차단하지 않음)
+
+![eve.json 로그 분석 결과](04-eve-json-analysis.png)
