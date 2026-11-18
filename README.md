@@ -150,6 +150,16 @@ systemctl을 통해 SSH 서비스의 active (running) 상태를 확인하고 jou
 
 실시간 로그 모니터링 중 새로운 SSH 접속 이벤트가 기록되는 것을 확인했습니다.
 
+### Suricata IDS 네트워크 침입 탐지
+
+Ubuntu Server와 Client 환경에서 Suricata IDS를 구성하고 ICMP Ping 및 SSH 연결 시도 탐지 규칙을 작성하였습니다.
+
+TCP SYN 패킷과 threshold 옵션을 활용하여 반복적인 SSH 연결 시도에 대한 경고 발생을 확인하였습니다.
+
+`fast.log` 및 `eve.json` 로그를 분석하여 출발지 IP, 목적지 IP, 포트, 탐지 메시지 및 처리 결과를 검증하였습니다.
+
+탐지 경고가 발생하지 않는 문제를 해결하는 과정에서 네트워크 인터페이스, 방화벽 설정 및 SSH 연결 상태를 점검하였습니다.
+
 ## 4. 프로젝트 진행 상태
 
 - [x] VMware 가상 서버 구축
@@ -166,6 +176,10 @@ systemctl을 통해 SSH 서비스의 active (running) 상태를 확인하고 jou
 - [x] systemctl 서비스 관리
 - [x] journalctl 로그 조회 및 분석
 - [x] 실습별 README 및 검증 이미지 정리
+- [x] Suricata IDS 설치 및 서비스 실행
+- [x] ICMP Ping 탐지 규칙 작성 및 검증
+- [x] 반복 SSH TCP SYN 연결 시도 탐지
+- [x] fast.log 및 eve.json 로그 분석
 
 ## 5. 프로젝트를 통해 학습한 내용
 
@@ -175,4 +189,9 @@ systemctl을 통해 SSH 서비스의 active (running) 상태를 확인하고 jou
 
 특히 LVM 확장, 사용자 접근 제어, 프로세스 종료 검증, SSH 서비스 상태 확인 및 로그 분석을 통해 서버 운영에서 상태 점검과 검증이 중요하다는 점을 배웠습니다.
 
+추가로 Suricata IDS 실습을 통해 네트워크 패킷 탐지 규칙을 직접 작성하고, ICMP 및 SSH 연결 시도에 대한 탐지 로그를 분석하는 경험을 쌓았습니다.
+
+특히 탐지 경고가 정상적으로 발생하지 않는 문제를 해결하면서 네트워크 인터페이스 설정, SSH 연결 상태, 방화벽 규칙 및 로그를 종합적으로 점검하는 문제 해결 과정을 경험하였습니다.
+
 앞으로도 Linux 서버 운영 역량을 기반으로 시스템·인프라 및 클라우드 환경에 대한 학습을 이어갈 계획입니다.
+
