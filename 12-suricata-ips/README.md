@@ -109,3 +109,65 @@ sudo systemctl status suricata --no-pager
 - IPS 종료 후 네트워크 통신 및 서비스 정상 복구
 
 이번 실습을 통해 단순히 네트워크 공격을 탐지하는 것에서 나아가, 패킷 전달 경로를 구성하고 실제 차단 결과를 검증하는 경험을 쌓았다.
+
+## 8. 실습 검증 스크린샷
+
+### 8.1 IPS 패킷 차단 규칙
+
+ICMP Echo Request 패킷을 차단하는 Suricata `drop` 규칙을 작성하였다.
+
+![IPS 차단 규칙](01-ips-rule.png)
+
+### 8.2 iptables NFQUEUE 설정
+
+Ubuntu Client에서 Ubuntu Server로 전달되는 ICMP Echo Request 패킷을 NFQUEUE 0번 큐로 전달하도록 설정하였다.
+
+![NFQUEUE 설정](02-nfqueue-rule.png)
+
+### 8.3 IPS 패킷 차단 로그
+
+Ubuntu Client에서 서버로 Ping을 전송한 결과, 패킷 손실률이 100%로 나타났다.
+
+Suricata의 `fast.log`에서 `[Drop]` 로그를 확인하여 IPS 차단 규칙이 정상 동작했음을 검증하였다.
+
+![IPS 패킷 차단 로그](03-ips-drop-log.png)
+
+### 8.4 eve.json 차단 로그 분석
+
+`jq` 명령어를 이용하여 Suricata의 `eve.json` 로그를 분석하였다.
+
+- 출발지 IP: `192.168.109.129`
+- 목적지 IP: `192.168.109.128`
+- 탐지 규칙 ID: `1000003`
+- 탐지 메시지: `IPS ICMP Ping Blocked`
+- 처리 결과: `blocked`
+
+![eve.json 분석](04-eve-json-analysis.png)
+
+### 8.5 NFQUEUE 규칙 제거
+
+IPS 실습 종료 후 iptables에 추가했던 NFQUEUE 규칙을 제거하였다.
+
+![NFQUEUE 규칙 제거](02-nfqueue-removed.png)
+
+### 8.6 정상 통신 복구 검증
+
+NFQUEUE 규칙 제거 후 Ubuntu Client에서 Ubuntu Server로 Ping을 다시 전송하였다.
+
+- 전송 패킷: 4개
+- 수신 패킷: 4개
+- 패킷 손실률: 0%
+
+이를 통해 IPS 차단 해제 후 정상 통신이 복구된 것을 확인하였다.
+
+![정상 통신 복구](05-ping-restored.png)
+
+## 9. 실습 결과 및 학습 내용
+
+이번 실습에서는 Suricata IPS와 iptables NFQUEUE를 연동하여 네트워크 패킷을 탐지하고 차단하는 과정을 검증하였다.
+
+IDS는 탐지 및 경고를 수행하는 반면, IPS는 패킷 처리 경로에 연결되어 탐지 규칙에 따라 실제 패킷을 차단할 수 있다는 차이를 확인하였다.
+
+특히 `fast.log`와 `eve.json`을 분석하여 패킷 차단 여부를 검증하고, NFQUEUE 규칙을 제거한 후 정상 통신이 복구되는 과정까지 확인하였다.
+
+이를 통해 Linux 방화벽, NFQUEUE, Suricata 탐지 규칙 및 네트워크 트래픽 처리 흐름에 대한 이해를 높였다.
